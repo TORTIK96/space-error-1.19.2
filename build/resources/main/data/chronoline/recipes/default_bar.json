@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "CSC",
+    " # "
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:egg"
+    },
+    "C": {
+      "item": "minecraft:cocoa_beans"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "result": {
+    "item": "chronoline:default_bar",
+    "count": 1
+  }
+}

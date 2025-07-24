@@ -1,0 +1,16 @@
+{
+  "item.chronoline.distorted_fragment": "Искажённый осколок",
+  "item.chronoline.distorted_fragment.desc1": "§o§8*Звук бьющегося сердца, всё чаще исходит от этого осколка*",
+  "item.chronoline.flower_bar": "§fЦветочный батончик",
+  "item.chronoline.default_bar": "§6Стандартный батончик",
+  "item.chronoline.ink_bar": "§0Чернильный батончик",
+  "item.chronoline.honey_bar": "§eМедовый батончик",
+  "item.chronoline.berry_bar": "§cЯгодный батончик",
+  "item.chronoline.ender_bar": "§2Эндер батончик",
+  "item.chronoline.bug_bar": "§5Гл§kючны§r§5й бат§5§kон§r§5чик",
+
+
+
+
+  "itemGroup.chronoline_tab": "Сюжетные предметы"
+}

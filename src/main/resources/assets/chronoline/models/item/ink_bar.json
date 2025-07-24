@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "chronoline:item/ink_bar",
+    "particle": "chronoline:item/ink_bar"
+  }
+}
