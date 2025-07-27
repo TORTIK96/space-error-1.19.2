@@ -45,6 +45,22 @@ public class RegisterItems {
             .tab(Chronoline.MOD_TAB)
             , StaminaCandyBarTypes.RANDOM));
 
+    public static final RegistryObject<Item> MONEY_5 = ITEMS.register("money_5", () -> new Money(new Item.Properties()
+            .tab(Chronoline.MOD_TAB)
+    ));
+
+    public static final RegistryObject<Item> MONEY_25 = ITEMS.register("money_25", () -> new Money(new Item.Properties()
+            .tab(Chronoline.MOD_TAB)
+    ));
+
+    public static final RegistryObject<Item> MONEY_50 = ITEMS.register("money_50", () -> new Money(new Item.Properties()
+            .tab(Chronoline.MOD_TAB)
+    ));
+
+    public static final RegistryObject<Item> MONEY_100 = ITEMS.register("money_100", () -> new Money(new Item.Properties()
+            .tab(Chronoline.MOD_TAB)
+    ));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }
