@@ -10,7 +10,9 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.server.ServerLifecycleHooks;
 import org.lwjgl.glfw.GLFW;
+import org.tor_tik96.chronoline.Npcs.NpcUtils;
 import org.tor_tik96.chronoline.hud.Chat.MyChatScreen;
+import org.tor_tik96.chronoline.hud.reputation.ReputatationScreen;
 import org.tor_tik96.chronoline.hud.upgrades.UpgradesScreen;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
@@ -43,10 +45,25 @@ public class Keybinds {
         }
     };
 
+    public static final KeyMapping reputationKey = new KeyMapping("key.chronoline.reputation_key", GLFW.GLFW_KEY_I, "key.categories.multiplayer"){
+        private boolean isDownOld = false;
+
+        @Override
+        public void setDown(boolean isDown) {
+            super.setDown(isDown);
+            if (isDownOld != isDown && isDown && !NpcUtils.getOpenNpc().isEmpty()) {
+                Minecraft.getInstance().setScreen(new ReputatationScreen());
+            }
+            isDownOld = isDown;
+
+        }
+    };
+
     @SubscribeEvent
     public static void registerKeyMappings(RegisterKeyMappingsEvent event) {
         event.register(chatKey);
         event.register(upgradesKey);
+        event.register(reputationKey);
     }
 
 

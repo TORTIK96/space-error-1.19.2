@@ -202,7 +202,7 @@ public class UpgradesScreen extends Screen {
         List<String> mesg = new ArrayList<>();
         String new_mesg = "";
 
-        if (message.length() > 100) {
+        if (message.length() > 1000) {
             return List.of("Сообщение не может быть выведено так как слишком длинное!");
         }
 

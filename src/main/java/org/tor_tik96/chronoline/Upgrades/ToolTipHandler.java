@@ -1,10 +1,11 @@
 package org.tor_tik96.chronoline.Upgrades;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.tor_tik96.chronoline.Chronoline;
@@ -16,34 +17,36 @@ import static org.tor_tik96.chronoline.Upgrades.StrengthAndCraftHandler.getUseLe
 @Mod.EventBusSubscriber(modid = Chronoline.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 public class ToolTipHandler {
 
-    @SubscribeEvent
+
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void tooltipEvent(ItemTooltipEvent event) {
         ItemStack itemStack = event.getItemStack();
-        if (!itemStack.isEmpty() && itemStack.is(Tags.Items.TOOLS)) {
+        if (!itemStack.isEmpty()) {
             int level = 0;
             Upgrades levelType = Upgrades.EMPTY;
-            if (itemStack.is(Tags.Items.TOOLS_AXES)) {
+            Item item = itemStack.getItem();
+            if (AxeItem.class.isAssignableFrom(item.getClass())) {
                 level = getUseLevel(itemStack.getItem(), StrengthAndCraftHandler.ToolType.AXE);
                 levelType = Upgrades.STRENGTH;
-            } else if (itemStack.is(Tags.Items.TOOLS_PICKAXES)) {
+            } else if (PickaxeItem.class.isAssignableFrom(item.getClass())) {
                 level = getUseLevel(itemStack.getItem(), StrengthAndCraftHandler.ToolType.PICKAXE);
                 levelType = Upgrades.CRAFT;
-            } else if (itemStack.is(Tags.Items.TOOLS_SHOVELS)) {
+            } else if (ShovelItem.class.isAssignableFrom(item.getClass())) {
                 level = getUseLevel(itemStack.getItem(), StrengthAndCraftHandler.ToolType.SHOVEL);
                 levelType = Upgrades.CRAFT;
-            } else if (itemStack.is(Tags.Items.TOOLS_HOES)) {
+            } else if (HoeItem.class.isAssignableFrom(item.getClass())) {
                 level = getUseLevel(itemStack.getItem(), StrengthAndCraftHandler.ToolType.HOE);
                 levelType = Upgrades.CRAFT;
-            } else if (itemStack.is(Tags.Items.TOOLS_SWORDS)) {
+            } else if (SwordItem.class.isAssignableFrom(item.getClass())) {
                 level = getUseLevel(itemStack.getItem(), StrengthAndCraftHandler.ToolType.SWORD);
                 levelType = Upgrades.STRENGTH;
-            } else if (itemStack.is(Tags.Items.TOOLS_BOWS)) {
+            } else if (BowItem.class.isAssignableFrom(item.getClass())) {
                 level = getUseLevel(itemStack.getItem(), StrengthAndCraftHandler.ToolType.BOW);
                 levelType = Upgrades.STRENGTH;
-            } else if (itemStack.is(Tags.Items.TOOLS_CROSSBOWS)) {
+            } else if (CrossbowItem.class.isAssignableFrom(item.getClass())) {
                 level = getUseLevel(itemStack.getItem(), StrengthAndCraftHandler.ToolType.CROSSBOW);
                 levelType = Upgrades.STRENGTH;
-            } else if (itemStack.is(Tags.Items.TOOLS_TRIDENTS)) {
+            } else if (TridentItem.class.isAssignableFrom(item.getClass())) {
                 level = getUseLevel(itemStack.getItem(), StrengthAndCraftHandler.ToolType.TRIDENT);
                 levelType = Upgrades.STRENGTH;
             }

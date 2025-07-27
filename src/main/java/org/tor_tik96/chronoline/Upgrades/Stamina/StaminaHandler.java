@@ -1,6 +1,8 @@
 package org.tor_tik96.chronoline.Upgrades.Stamina;
 
+import com.mojang.authlib.GameProfile;
 import net.minecraft.client.Minecraft;
+import net.minecraft.commands.arguments.GameProfileArgument;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.Entity;
@@ -226,7 +228,7 @@ public class StaminaHandler {
                 setStaminaFlick();
                 mine = false;
                 mineTime = 40;
-            } else {//не давать игроку даже начинать копать
+            } else {
                 event.setCanceled(true);
             }
         }
@@ -237,8 +239,6 @@ public class StaminaHandler {
         if (!canBreaking() || !StrengthAndCraftHandler.canUseToolPlayer(event.getEntity()) && Minecraft.getInstance().gameMode != null && Minecraft.getInstance().gameMode.canHurtPlayer()) {
             event.setCanceled(true);
         }
-        mine = false;
-        mineTime = 40;
     }
 
     private static boolean canBreaking() {

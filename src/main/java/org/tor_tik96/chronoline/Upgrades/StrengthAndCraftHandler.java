@@ -3,8 +3,6 @@ package org.tor_tik96.chronoline.Upgrades;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraftforge.common.Tags;
-import org.tor_tik96.chronoline.Network.PacketHandler;
 import org.tor_tik96.chronoline.Upgrades.Craft.ClientCraft;
 import org.tor_tik96.chronoline.Upgrades.Strength.ClientStrength;
 
@@ -17,29 +15,30 @@ public class StrengthAndCraftHandler {
     }
 
     public static boolean canUseTool(ItemStack itemStack) {
-        if (!itemStack.isEmpty() && itemStack.is(Tags.Items.TOOLS)) {
-            if (itemStack.is(Tags.Items.TOOLS_AXES)) {
+        if (!itemStack.isEmpty()) {
+            Item item = itemStack.getItem();
+            if (AxeItem.class.isAssignableFrom(item.getClass())) {
                 int level = getUseLevel(itemStack.getItem(), ToolType.AXE);
                 return canUseItem(level, Upgrades.STRENGTH);
-            } else if (itemStack.is(Tags.Items.TOOLS_PICKAXES)) {
+            } else if (PickaxeItem.class.isAssignableFrom(item.getClass())) {
                 int level = getUseLevel(itemStack.getItem(), ToolType.PICKAXE);
                 return canUseItem(level, Upgrades.CRAFT);
-            } else if (itemStack.is(Tags.Items.TOOLS_SHOVELS)) {
+            } else if (ShovelItem.class.isAssignableFrom(item.getClass())) {
                 int level = getUseLevel(itemStack.getItem(), ToolType.SHOVEL);
                 return canUseItem(level, Upgrades.CRAFT);
-            } else if (itemStack.is(Tags.Items.TOOLS_HOES)) {
+            } else if (HoeItem.class.isAssignableFrom(item.getClass())) {
                 int level = getUseLevel(itemStack.getItem(), ToolType.HOE);
                 return canUseItem(level, Upgrades.CRAFT);
-            } else if (itemStack.is(Tags.Items.TOOLS_SWORDS)) {
+            } else if (SwordItem.class.isAssignableFrom(item.getClass())) {
                 int level = getUseLevel(itemStack.getItem(), ToolType.SWORD);
                 return canUseItem(level, Upgrades.STRENGTH);
-            } else if (itemStack.is(Tags.Items.TOOLS_BOWS)) {
+            } else if (BowItem.class.isAssignableFrom(item.getClass())) {
                 int level = getUseLevel(itemStack.getItem(), ToolType.BOW);
                 return canUseItem(level, Upgrades.STRENGTH);
-            } else if (itemStack.is(Tags.Items.TOOLS_CROSSBOWS)) {
+            } else if (CrossbowItem.class.isAssignableFrom(item.getClass())) {
                 int level = getUseLevel(itemStack.getItem(), ToolType.CROSSBOW);
                 return canUseItem(level, Upgrades.STRENGTH);
-            } else if (itemStack.is(Tags.Items.TOOLS_TRIDENTS)) {
+            } else if (TridentItem.class.isAssignableFrom(item.getClass())) {
                 int level = getUseLevel(itemStack.getItem(), ToolType.TRIDENT);
                 return canUseItem(level, Upgrades.STRENGTH);
             }
@@ -76,7 +75,6 @@ public class StrengthAndCraftHandler {
             int baseLevel = type.getBaseLevel();
 
             double factor = (uses * weightUses + speed * weightSpeed + attackDamage * weightAttackDamage);
-
             double rawLevel;
 
             if (factor > baseFactor) {

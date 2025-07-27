@@ -9,6 +9,7 @@ import net.minecraft.world.level.Level;
 import net.minecraftforge.client.event.RenderGuiEvent;
 import net.minecraftforge.event.ServerChatEvent;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import org.tor_tik96.chronoline.Upgrades.Stamina.ClientStamina;
@@ -54,7 +55,7 @@ public class RegisterHUD {
     }
 
     // В событии рендера GUI
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
     public static void RenderPre(RenderGuiEvent.Pre event) {
         event.setCanceled(true);
         if (generalHUD == null) {
@@ -134,9 +135,9 @@ public class RegisterHUD {
         //string = message;
 
         List<String> mesg = Arrays.stream(message.split(" ")).toList();
-        if (mesg.size() == 2) {
-            a1 = Integer.valueOf(mesg.get(0));
-            a2 = Integer.valueOf(mesg.get(1));/*
+        if (mesg.size() == 1) {
+            a1 = Integer.valueOf(mesg.get(0));/*
+            a2 = Integer.valueOf(mesg.get(1));
             a3 = Integer.valueOf(mesg.get(2));
             a4 = Integer.valueOf(mesg.get(3));
             a5 = Integer.valueOf(mesg.get(4));
