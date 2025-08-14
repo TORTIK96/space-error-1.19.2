@@ -16,6 +16,8 @@ import org.tor_tik96.chronoline.Network.Craft.ClientCraftPacketS2C;
 import org.tor_tik96.chronoline.Network.Craft.ServerCraftPacketC2S;
 import org.tor_tik96.chronoline.Network.DistortedFragments.ClientDistortedFragmentsPacketS2C;
 import org.tor_tik96.chronoline.Network.DistortedFragments.ServerDistortedFragmentsPacketC2S;
+import org.tor_tik96.chronoline.Network.Ephemerons.ClientEphemeronsPacketS2C;
+import org.tor_tik96.chronoline.Network.Ephemerons.ServerEphemeronsPacketC2S;
 import org.tor_tik96.chronoline.Network.Magic.ClientMagicPacketS2C;
 import org.tor_tik96.chronoline.Network.Magic.ServerMagicPacketC2S;
 import org.tor_tik96.chronoline.Network.PacketHandler;
@@ -30,6 +32,9 @@ import org.tor_tik96.chronoline.Upgrades.Craft.PlayerCraftProvider;
 import org.tor_tik96.chronoline.Upgrades.DistortedFragments.ClientDistortedFragments;
 import org.tor_tik96.chronoline.Upgrades.DistortedFragments.PlayerDistortedFragments;
 import org.tor_tik96.chronoline.Upgrades.DistortedFragments.PlayerDistortedFragmentsProvider;
+import org.tor_tik96.chronoline.Upgrades.Ephemeron.ClientEphemerons;
+import org.tor_tik96.chronoline.Upgrades.Ephemeron.PlayerEphemerons;
+import org.tor_tik96.chronoline.Upgrades.Ephemeron.PlayerEphemeronsProvider;
 import org.tor_tik96.chronoline.Upgrades.Magic.ClientMagic;
 import org.tor_tik96.chronoline.Upgrades.Magic.PlayerMagic;
 import org.tor_tik96.chronoline.Upgrades.Magic.PlayerMagicProvider;
@@ -65,6 +70,9 @@ public class RegisterCapabilities {
             }
             if(!event.getObject().getCapability(PlayerDistortedFragmentsProvider.PLAYER_DISTORTED_FRAGMENTS).isPresent()) {
                 event.addCapability(ResourceLocation.fromNamespaceAndPath(Chronoline.MODID, "player_distorted_fragments"), new PlayerDistortedFragmentsProvider());
+            }
+            if(!event.getObject().getCapability(PlayerEphemeronsProvider.PLAYER_EPHEMERONS).isPresent()) {
+                event.addCapability(ResourceLocation.fromNamespaceAndPath(Chronoline.MODID, "player_ephemerons"), new PlayerEphemeronsProvider());
             }
         }
     }
@@ -102,6 +110,11 @@ public class RegisterCapabilities {
                     newStore.copyFrom(oldStore);
                 });
             });
+            event.getOriginal().getCapability(PlayerEphemeronsProvider.PLAYER_EPHEMERONS).ifPresent(oldStore -> {
+                event.getOriginal().getCapability(PlayerEphemeronsProvider.PLAYER_EPHEMERONS).ifPresent(newStore -> {
+                    newStore.copyFrom(oldStore);
+                });
+            });
         }
     }
 
@@ -113,6 +126,7 @@ public class RegisterCapabilities {
         event.register(PlayerMagic.class);
         event.register(PlayerRhetoric.class);
         event.register(PlayerDistortedFragments.class);
+        event.register(PlayerEphemerons.class);
     }
 
     @SubscribeEvent
@@ -144,6 +158,12 @@ public class RegisterCapabilities {
                 player.getCapability(PlayerDistortedFragmentsProvider.PLAYER_DISTORTED_FRAGMENTS).ifPresent(distortedFragments -> {
                     PacketHandler.sendToPlayer(new ClientDistortedFragmentsPacketS2C(distortedFragments.getFragments()), player);
                 });
+                player.getCapability(PlayerEphemeronsProvider.PLAYER_EPHEMERONS).ifPresent(ephemerons -> {
+                    PacketHandler.sendToPlayer(new ClientEphemeronsPacketS2C(ephemerons.getEphemerons()), player);
+                });
+                player.getCapability(PlayerEphemeronsProvider.PLAYER_EPHEMERONS).ifPresent(ephemerons -> {
+                    PacketHandler.sendToPlayer(new ClientEphemeronsPacketS2C(ephemerons.getEphemerons()), player);
+                });
             }
 
         }
@@ -161,6 +181,7 @@ public class RegisterCapabilities {
                 PacketHandler.sendToServer(new ServerMagicPacketC2S(ClientMagic.getMagic()));
                 PacketHandler.sendToServer(new ServerRhetoricPacketC2S(ClientRhetoric.getRhetoric()));
                 PacketHandler.sendToServer(new ServerDistortedFragmentsPacketC2S(ClientDistortedFragments.getDistortedFragments()));
+                PacketHandler.sendToServer(new ServerEphemeronsPacketC2S(ClientEphemerons.getEphemerons()));
             }
         }
     }

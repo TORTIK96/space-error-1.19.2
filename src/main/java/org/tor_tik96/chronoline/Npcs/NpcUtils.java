@@ -8,8 +8,8 @@ import java.util.List;
 
 public class NpcUtils {
     public static final List<String> finalNPCs = List.of(
-            new NPC(NpcReputations.PERDUN, 0, true, true).toString(),
-            new NPC(NpcReputations.LAFARIK, 70, false, true).toString()
+            new NPC(NpcReputations.PERDUN, 0, true, false).toString(),
+            new NPC(NpcReputations.LAFARIK, 0, true, false).toString()
     );
 
     public static List<NPC> getAllNpc() {

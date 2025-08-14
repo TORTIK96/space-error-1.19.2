@@ -3,8 +3,8 @@ Specification-Title: chronoline
 Specification-Vendor: TOR_TIK96
 Specification-Version: 1
 Implementation-Title: space-error-1-19-2
-Implementation-Version: 0.1-SNAPSHOT
+Implementation-Version: 0.2
 Implementation-Vendor: TOR_TIK96
-Implementation-Timestamp: 2025-07-26T22:27:06+0300
+Implementation-Timestamp: 2025-08-15T00:45:55+0300
 MixinConfigs: chronoline.mixins.json
 

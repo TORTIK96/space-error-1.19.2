@@ -1,6 +1,10 @@
 {
   "item.chronoline.distorted_fragment": "Искажённый осколок",
   "item.chronoline.distorted_fragment.desc1": "§o§8*Звук бьющегося сердца, всё чаще исходит от этого осколка*",
+
+  "item.chronoline.ephemeron": "Эфемерон",
+  "item.chronoline.ephemeron.desc1": "§o§8*От него веет теплом и добротой*",
+
   "item.chronoline.flower_bar": "§fЦветочный батончик",
   "item.chronoline.default_bar": "§6Стандартный батончик",
   "item.chronoline.ink_bar": "§0Чернильный батончик",
@@ -8,13 +12,20 @@
   "item.chronoline.berry_bar": "§cЯгодный батончик",
   "item.chronoline.ender_bar": "§2Эндер батончик",
   "item.chronoline.bug_bar": "§5Гл§kючны§r§5й бат§5§kон§r§5чик",
+
   "item.chronoline.money_5": "5 сунтов",
   "item.chronoline.money_25": "25 сунтов",
   "item.chronoline.money_50": "50 сунтов",
   "item.chronoline.money_100": "100 сунтов",
 
+  "item.chronoline.locker": "Замок",
+  "item.chronoline.locker.desc1": "§o§8*При использовании этого предмета на двери §2открывает §o§8или §4закрывает §o§8её*",
 
 
+  "block.chronoline.black_spec_block": "Специальный чёрный блок",
+
+
+  "sounds.chronoline.crick": "Крик умирающей чайки",
 
   "itemGroup.chronoline_tab": "Сюжетные предметы"
 }

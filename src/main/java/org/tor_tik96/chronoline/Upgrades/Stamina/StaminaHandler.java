@@ -115,22 +115,24 @@ public class StaminaHandler {
                     regenerateTick = 0;
                 } // Сделать gamerule на естественную регенерацию стамины
                 boolean isSprinting = player.isSprinting();
-                if (isSprinting && getStamina() >= StaminaActionsCost.RUNNING.getCost() && runTime < 20) {
-                    stay = false;
-                    stayTime = 40;
-                    runTime++;
-                } else if (isSprinting && getStamina() >= StaminaActionsCost.RUNNING.getCost()) {
-                    runTime = 0;
-                    subStamina(StaminaActionsCost.RUNNING.getCost());
-                    setStaminaFlick();
-                    stay = false;
-                    stayTime = 40;
-                } else if (isSprinting) {
-                    player.setSprinting(false);
-                    player.setSpeed(0.1F);
-                    stay = false;
-                    stayTime = 40;
-                    runTime = 0;
+                if (!player.isInWater() && !player.isUnderWater()) {
+                    if (isSprinting && getStamina() >= StaminaActionsCost.RUNNING.getCost() && runTime < 20) {
+                        stay = false;
+                        stayTime = 40;
+                        runTime++;
+                    } else if (isSprinting && getStamina() >= StaminaActionsCost.RUNNING.getCost()) {
+                        runTime = 0;
+                        subStamina(StaminaActionsCost.RUNNING.getCost());
+                        setStaminaFlick();
+                        stay = false;
+                        stayTime = 40;
+                    } else if (isSprinting) {
+                        player.setSprinting(false);
+                        player.setSpeed(0.1F);
+                        stay = false;
+                        stayTime = 40;
+                        runTime = 0;
+                    }
                 }
 
                 if (!isSprinting && stayTime > 0) {

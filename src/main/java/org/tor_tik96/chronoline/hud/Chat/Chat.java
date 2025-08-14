@@ -197,8 +197,24 @@ public class Chat extends GuiComponent {
         }
     }
 
+    public void addOneTimeMessage(String message) {
+        if (message.length() <= maxTotalLength) {
+            List<String> mesg = splitterMessage(message);
+            int endTick = this.tick + (40 * lengthMes.get(message));
+            lengthMes.remove(message);
+            activeMessages.put("", Map.of(endTick, mesg));
+        }
+    }
+
     public List<Map<String, List<String>>> getMessages() {
         return messages;
+    }
+
+    public void clearChat() {
+        activeMessages.clear();
+        messages.clear();
+        senderColors.clear();
+        lengthMes.clear();
     }
 
     public int getSenderColor(int index) {

@@ -22,4 +22,12 @@ public class Timer {
         Timer.tick = tick;
     }
 
+    public static int getTimerTick() {
+        return tick;
+    }
+
+    public static int getTimerSeconds() {
+        return tick / 20;
+    }
+
 }

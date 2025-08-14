@@ -42,10 +42,8 @@ public class StrengthAndCraftHandler {
                 int level = getUseLevel(itemStack.getItem(), ToolType.TRIDENT);
                 return canUseItem(level, Upgrades.STRENGTH);
             }
-        } else {
-            return true;
         }
-        return false;
+        return true;
     }
 
     public static boolean canUseItem(int level, Upgrades type) {

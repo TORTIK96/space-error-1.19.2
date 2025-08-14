@@ -17,6 +17,10 @@ public class RegisterItems {
             .tab(Chronoline.MOD_TAB)
     ));
 
+    public static final RegistryObject<Item> EPHEMERON = ITEMS.register("ephemeron", () -> new Ephemeron(new Item.Properties()
+            .tab(Chronoline.MOD_TAB)
+    ));
+
     public static final RegistryObject<Item> FLOWER_BAR = ITEMS.register("flower_bar", () -> new StaminaCandyBar(new Item.Properties()
             .tab(Chronoline.MOD_TAB)
     , StaminaCandyBarTypes.FLOWER));
@@ -58,6 +62,12 @@ public class RegisterItems {
     ));
 
     public static final RegistryObject<Item> MONEY_100 = ITEMS.register("money_100", () -> new Money(new Item.Properties()
+            .tab(Chronoline.MOD_TAB)
+    ));
+
+    public static final RegistryObject<Item> LOCKER = ITEMS.register("locker", () -> new Locker(new Item.Properties()
+            .stacksTo(1)
+            .fireResistant()
             .tab(Chronoline.MOD_TAB)
     ));
 

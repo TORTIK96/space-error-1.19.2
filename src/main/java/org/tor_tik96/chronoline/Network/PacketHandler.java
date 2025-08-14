@@ -11,6 +11,8 @@ import org.tor_tik96.chronoline.Network.Craft.ClientCraftPacketS2C;
 import org.tor_tik96.chronoline.Network.Craft.ServerCraftPacketC2S;
 import org.tor_tik96.chronoline.Network.DistortedFragments.ClientDistortedFragmentsPacketS2C;
 import org.tor_tik96.chronoline.Network.DistortedFragments.ServerDistortedFragmentsPacketC2S;
+import org.tor_tik96.chronoline.Network.Ephemerons.ClientEphemeronsPacketS2C;
+import org.tor_tik96.chronoline.Network.Ephemerons.ServerEphemeronsPacketC2S;
 import org.tor_tik96.chronoline.Network.Magic.ClientMagicPacketS2C;
 import org.tor_tik96.chronoline.Network.Magic.ServerMagicPacketC2S;
 import org.tor_tik96.chronoline.Network.Rhetoric.ClientRhetoricPacketS2C;
@@ -118,6 +120,26 @@ public class PacketHandler {
                 ClientDistortedFragmentsPacketS2C::encode,
                 ClientDistortedFragmentsPacketS2C::decode,
                 ClientDistortedFragmentsPacketS2C::handle);
+
+        CHANNEL.registerMessage(id(), ServerEphemeronsPacketC2S.class,
+                ServerEphemeronsPacketC2S::encode,
+                ServerEphemeronsPacketC2S::decode,
+                ServerEphemeronsPacketC2S::handle);
+
+        CHANNEL.registerMessage(id(), ClientEphemeronsPacketS2C.class,
+                ClientEphemeronsPacketS2C::encode,
+                ClientEphemeronsPacketS2C::decode,
+                ClientEphemeronsPacketS2C::handle);
+
+        CHANNEL.registerMessage(id(), SetCloseDoorPacketS2C.class,
+                SetCloseDoorPacketS2C::encode,
+                SetCloseDoorPacketS2C::decode,
+                SetCloseDoorPacketS2C::handle);
+
+        CHANNEL.registerMessage(id(), SetCloseDoorPacketC2S.class,
+                SetCloseDoorPacketC2S::encode,
+                SetCloseDoorPacketC2S::decode,
+                SetCloseDoorPacketC2S::handle);
     }
 
     public static <MSG> void sendToServer(MSG msg) {

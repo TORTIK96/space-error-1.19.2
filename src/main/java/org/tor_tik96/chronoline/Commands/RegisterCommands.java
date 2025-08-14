@@ -20,6 +20,5 @@ public class RegisterCommands {
         new SetDistortedFragmentsCommand(dispatcher);
         new SetStaminaRegenerate(dispatcher);
         new SetTimerCommand(dispatcher);
-        new addPositiveCommand(dispatcher);
     }
 }

@@ -1,6 +1,7 @@
 package org.tor_tik96.chronoline.hud;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
@@ -34,6 +35,8 @@ public class RegisterHUD {
     public static int a8 = 0;
     public static int a9 = 0;
     public static int a10 = 0;
+
+    public static BlockPos oldPos;
 
     public static double lastHealth = 0;
     public static int flickerTimer = 0;
@@ -135,10 +138,10 @@ public class RegisterHUD {
         //string = message;
 
         List<String> mesg = Arrays.stream(message.split(" ")).toList();
-        if (mesg.size() == 1) {
-            a1 = Integer.valueOf(mesg.get(0));/*
+        if (mesg.size() == 3) {
+            a1 = Integer.valueOf(mesg.get(0));
             a2 = Integer.valueOf(mesg.get(1));
-            a3 = Integer.valueOf(mesg.get(2));
+            a3 = Integer.valueOf(mesg.get(2));/*
             a4 = Integer.valueOf(mesg.get(3));
             a5 = Integer.valueOf(mesg.get(4));
             a6 = Integer.valueOf(mesg.get(5));

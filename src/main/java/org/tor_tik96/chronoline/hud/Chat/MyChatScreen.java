@@ -2,13 +2,15 @@ package org.tor_tik96.chronoline.hud.Chat;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.entity.player.Player;
+import org.tor_tik96.chronoline.Config;
+import org.tor_tik96.chronoline.hud.Abilities.AbilityTypes;
 import org.tor_tik96.chronoline.hud.RegisterHUD;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -91,7 +93,41 @@ public class MyChatScreen extends Screen {
             } else if (keyCode == 257 || keyCode == 335) { // Enter
                 String message = this.inputField.getValue();
                 if (!message.isEmpty() && Minecraft.getInstance().player != null && RegisterHUD.generalHUD != null) {
-                    RegisterHUD.generalHUD.getMyChat().addMessage(Minecraft.getInstance().player.getDisplayName().getString(), message, "FFFFFF");
+                    Player player = Minecraft.getInstance().player;
+                    RegisterHUD.generalHUD.getMyChat().addMessage(player.getDisplayName().getString(), message, "FFFFFF");
+                    if (message.equals("Pocket Abyss") && Config.isOpenAbilityDim() && Config.isActiveAbility(AbilityTypes.DIMENSION) && !Config.isAbilityDim(player.getOnPos())) {
+                        BlockPos pos = Config.getAbilityDimTeleportPos();
+                        RegisterHUD.oldPos = new BlockPos(player.getOnPos().getX(), player.getOnPos().getY() + 1, player.getOnPos().getZ());
+                        Minecraft.getInstance().player.teleportTo(pos.getX(), pos.getY(), pos.getZ());
+                    } else if (message.equals("Abyss Out") && Config.isOpenAbilityDim() && Config.isActiveAbility(AbilityTypes.DIMENSION) && Config.isAbilityDim(player.getOnPos())) {
+                        if (RegisterHUD.oldPos == null) {
+                            BlockPos pos = player.getLevel().getSharedSpawnPos();
+                            if (player.getSleepingPos().isPresent()) {
+                                pos = player.getSleepingPos().get();
+                            }
+                            Minecraft.getInstance().player.teleportTo(pos.getX(), pos.getY(), pos.getZ());
+                        } else {
+                            BlockPos pos = RegisterHUD.oldPos;
+                            Minecraft.getInstance().player.teleportTo(pos.getX(), pos.getY(), pos.getZ());
+                        }
+                        RegisterHUD.oldPos = null;
+                    } else if (message.equals("EasterLand") && Config.isOpenPDim() && !Config.isPDim(player.getOnPos())) {
+                        BlockPos pos = Config.getPDimTeleportPos();
+                        RegisterHUD.oldPos = new BlockPos(player.getOnPos().getX(), player.getOnPos().getY() + 1, player.getOnPos().getZ());
+                        Minecraft.getInstance().player.teleportTo(pos.getX(), pos.getY(), pos.getZ());
+                    } else if (message.equals("EasterOut") && Config.isOpenPDim() && Config.isPDim(player.getOnPos())) {
+                        if (RegisterHUD.oldPos == null) {
+                            BlockPos pos = player.getLevel().getSharedSpawnPos();
+                            if (player.getSleepingPos().isPresent()) {
+                                pos = player.getSleepingPos().get();
+                            }
+                            Minecraft.getInstance().player.teleportTo(pos.getX(), pos.getY(), pos.getZ());
+                        } else {
+                            BlockPos pos = RegisterHUD.oldPos;
+                            Minecraft.getInstance().player.teleportTo(pos.getX(), pos.getY(), pos.getZ());
+                        }
+                        RegisterHUD.oldPos = null;
+                    }
                 }
                 this.inputField.setValue("");
                 return true;

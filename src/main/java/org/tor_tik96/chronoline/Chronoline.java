@@ -14,8 +14,10 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+import org.tor_tik96.chronoline.Blocks.RegisterBlocks;
 import org.tor_tik96.chronoline.Items.RegisterItems;
 import org.tor_tik96.chronoline.Network.PacketHandler;
+import org.tor_tik96.chronoline.Sounds.RegisterSounds;
 import org.tor_tik96.chronoline.hud.RegisterHUD;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -25,7 +27,7 @@ public class Chronoline {
     // Define mod id in a common place for everything to reference
     public static final String MODID = "chronoline";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static CreativeModeTab MOD_TAB = new CreativeModeTab("chronoline_tab") {
         @Override
@@ -38,6 +40,8 @@ public class Chronoline {
         IEventBus modEventBus = context.getModEventBus();
 
         RegisterItems.register(modEventBus);
+        RegisterBlocks.register(modEventBus);
+        RegisterSounds.register(modEventBus);
 
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);

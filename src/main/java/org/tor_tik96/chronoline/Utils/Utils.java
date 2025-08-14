@@ -1,5 +1,7 @@
 package org.tor_tik96.chronoline.Utils;
 
+import java.util.List;
+
 public class Utils {
     public static int HexToDecimal(String hexVal) {
         int len = hexVal.length();
@@ -35,5 +37,19 @@ public class Utils {
             }
         }
         return dec_val;
+    }
+
+    public static String seconds(int seconds) {
+        int end = seconds % 10;
+        List<Integer> twoToFour = List.of(2, 3, 4);
+        String answer;
+        if (end == 1) {
+            answer = "секунда";
+        } else if (twoToFour.contains(end)) {
+            answer = "секунды";
+        } else {
+            answer = "секунд";
+        }
+        return answer;
     }
 }
