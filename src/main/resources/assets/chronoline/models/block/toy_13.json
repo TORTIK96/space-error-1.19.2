@@ -1,0 +1,7 @@
+{
+  "parent": "chronoline:block/toy_b",
+  "textures": {
+    "0": "chronoline:item/toy_13",
+    "particle": "chronoline:item/toy_13"
+  }
+}
