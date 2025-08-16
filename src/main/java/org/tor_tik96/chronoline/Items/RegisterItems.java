@@ -15,10 +15,12 @@ public class RegisterItems {
 
     public static final RegistryObject<Item> DISTORTED_FRAGMENT = ITEMS.register("distorted_fragment", () -> new DistortedFragment(new Item.Properties()
             .tab(Chronoline.MOD_TAB)
+            .fireResistant()
     ));
 
     public static final RegistryObject<Item> EPHEMERON = ITEMS.register("ephemeron", () -> new Ephemeron(new Item.Properties()
             .tab(Chronoline.MOD_TAB)
+            .fireResistant()
     ));
 
     public static final RegistryObject<Item> FLOWER_BAR = ITEMS.register("flower_bar", () -> new StaminaCandyBar(new Item.Properties()

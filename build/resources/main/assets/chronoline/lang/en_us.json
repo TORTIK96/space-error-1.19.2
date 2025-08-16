@@ -18,6 +18,24 @@
   "item.chronoline.money_50": "50 сунтов",
   "item.chronoline.money_100": "100 сунтов",
 
+  "block.chronoline.toy_1": "Загадочная игрушка",
+  "block.chronoline.toy_2": "Загадочная игрушка",
+  "block.chronoline.toy_3": "Загадочная игрушка",
+  "block.chronoline.toy_4": "Загадочная игрушка",
+  "block.chronoline.toy_5": "Загадочная игрушка",
+  "block.chronoline.toy_6": "Загадочная игрушка",
+  "block.chronoline.toy_7": "Загадочная игрушка",
+  "block.chronoline.toy_8": "Загадочная игрушка",
+  "block.chronoline.toy_9": "Загадочная игрушка",
+  "block.chronoline.toy_10": "Загадочная игрушка",
+  "block.chronoline.toy_11": "Загадочная игрушка",
+  "block.chronoline.toy_12": "Загадочная игрушка",
+  "block.chronoline.toy_13": "Загадочная игрушка",
+  "block.chronoline.toy_14": "Загадочная игрушка",
+  "block.chronoline.toy_15": "Загадочная игрушка",
+
+
+
   "item.chronoline.locker": "Замок",
   "item.chronoline.locker.desc1": "§o§8*При использовании этого предмета на двери §2открывает §o§8или §4закрывает §o§8её*",
 
@@ -27,5 +45,6 @@
 
   "sounds.chronoline.crick": "Крик умирающей чайки",
 
-  "itemGroup.chronoline_tab": "Сюжетные предметы"
+  "itemGroup.chronoline_tab": "Сюжетные предметы",
+  "itemGroup.easter_tab": "Пасхалки"
 }

@@ -36,6 +36,13 @@ public class Chronoline {
         }
     };
 
+    public static CreativeModeTab EASTER_TAB = new CreativeModeTab("easter_tab") {
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(RegisterBlocks.TOY_1.get());
+        }
+    };
+
     public Chronoline(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
 

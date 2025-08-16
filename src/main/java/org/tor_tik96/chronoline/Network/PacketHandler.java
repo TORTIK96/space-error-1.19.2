@@ -7,6 +7,8 @@ import net.minecraftforge.network.NetworkRegistry;
 import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 import org.tor_tik96.chronoline.Chronoline;
+import org.tor_tik96.chronoline.Network.Chat.SendChatMessagePacketC2S;
+import org.tor_tik96.chronoline.Network.Chat.SendChatMessagePacketS2C;
 import org.tor_tik96.chronoline.Network.Craft.ClientCraftPacketS2C;
 import org.tor_tik96.chronoline.Network.Craft.ServerCraftPacketC2S;
 import org.tor_tik96.chronoline.Network.DistortedFragments.ClientDistortedFragmentsPacketS2C;
@@ -140,6 +142,16 @@ public class PacketHandler {
                 SetCloseDoorPacketC2S::encode,
                 SetCloseDoorPacketC2S::decode,
                 SetCloseDoorPacketC2S::handle);
+
+        CHANNEL.registerMessage(id(), SendChatMessagePacketC2S.class,
+                SendChatMessagePacketC2S::encode,
+                SendChatMessagePacketC2S::decode,
+                SendChatMessagePacketC2S::handle);
+
+        CHANNEL.registerMessage(id(), SendChatMessagePacketS2C.class,
+                SendChatMessagePacketS2C::encode,
+                SendChatMessagePacketS2C::decode,
+                SendChatMessagePacketS2C::handle);
     }
 
     public static <MSG> void sendToServer(MSG msg) {

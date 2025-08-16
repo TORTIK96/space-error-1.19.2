@@ -40,24 +40,24 @@ authors = "TOR_TIK96" #optional
 
 # The description text for the mod (multi line!) (#mandatory)
 description = ''''''
-# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+
 [[dependencies."chronoline"]] #optional
-# the modid of the dependency
-modId = "forge" #mandatory
-# Does this dependency have to exist - if not, ordering below must be specified
-mandatory = true #mandatory
-# The version range of the dependency
-versionRange = "[43,)" #mandatory
-# An ordering relationship for the dependency - BEFORE or AFTER required if the dependency is not mandatory
-# BEFORE - This mod is loaded BEFORE the dependency
-# AFTER - This mod is loaded AFTER the dependency
-ordering = "NONE"
-# Side this dependency is applied on - BOTH, CLIENT, or SERVER
-side = "BOTH"# Here's another dependency
+    modId = "forge" #mandatory
+    mandatory = true #mandatory
+    versionRange = "[43,)" #mandatory
+    ordering = "NONE"
+    side = "BOTH"# Here's another dependency
+
 [[dependencies."chronoline"]]
-modId = "minecraft"
-mandatory = true
-# This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange = "[1.19.2,1.20)"
-ordering = "NONE"
-side = "BOTH"
+    modId = "minecraft"
+    mandatory = true
+    versionRange = "[1.19.2,1.20)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies."chronoline"]]
+    modId = "photon"
+    mandatory = true
+    versionRange = "[1.0.7.a,)"
+    ordering = "NONE"
+    side = "BOTH"
